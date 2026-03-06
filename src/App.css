@@ -1,99 +1,187 @@
-/* Container Styling */
-.main-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f9f9f9;
-    flex-direction: column; /* Stack elements vertically */
+/* ── Background ── */
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  position: relative;
+  overflow: hidden;
+  background: #0f0b2e;
 }
 
-.submit-button{
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
-
-    &:hover{
-        background-color: #0056b3;
-    }
+/* Floating gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  will-change: transform;
+}
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  top: -10%;
+  left: -10%;
+  background: rgba(99, 102, 241, 0.35);
+  animation: float 12s ease-in-out infinite;
+}
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -15%;
+  right: -10%;
+  background: rgba(236, 72, 153, 0.3);
+  animation: float 15s ease-in-out infinite reverse;
+}
+.orb-3 {
+  width: 350px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(56, 189, 248, 0.2);
+  animation: float 10s ease-in-out infinite 2s;
 }
 
-.container {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    gap: 20px; /* Add space between the box-title and input field */
-    width: 300px; /* Fixed width for the container */
-    margin: 20px auto; /* Center the container horizontally */
-    font-family: Arial, sans-serif;
-    border: 2px solid #e0e0e0; /* Subtle border */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* General Box Styling */
-  .box-title {
-    display: flex;
-    align-items: center; /* Vertically center the items */
-    justify-content: space-between; /* Place items on either side of the box */
-    background-color: #f9f9f9; /* Light background */
-    padding: 10px 20px; /* Padding inside the box */
-  }
-  
-  /* Title Styling */
-  .title {
-    font-size: 20px;
-    color: #333; /* Dark text color */
-    white-space: nowrap; /* Prevent wrapping of text */
-    margin: 0; /* Remove default margin */
-  }
-  
-  /* Dropdown Styling */
-  select {
-    padding: 10px; /* Spacing inside the dropdown */
-    font-size: 16px;
-    color: #333; /* Text color */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    outline: none; /* Remove outline */
-    cursor: pointer;
-    transition: border-color 0.3s ease; /* Smooth border change */
-    width: 150px; /* Fixed width for the dropdown */
-  }
-  
-  /* Hover and Focus States */
-  select:hover,
-  select:focus {
-    border-color: #007bff; /* Blue border on hover/focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */
-  }
-  
-  input[type="number"] {
-    margin-left: 15%;
-    margin-bottom: 10%;
-    width: fit-content; /* Full width */
-    padding: 5px; /* Spacing inside the input */
-    font-size: 16px;
-    color: #333; /* Text color */
-    background-color: #fff; /* White background */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inner shadow */
-    outline: none; /* Remove outline */
-    transition: border-color 0.3s ease; /* Smooth border change */
-  }
-  
-  /* Input Hover and Focus States */
-  input[type="number"]:hover,
-  input[type="number"]:focus {
-    border-color: #007bff; /* Blue border on hover/focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */
-  }
-  
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+/* ── Card ── */
+.app-card {
+  padding: 0;
+  border-radius: 24px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.06),
+    0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden;
+}
+
+/* ── Title ── */
+.app-title {
+  font-weight: 700 !important;
+  font-size: clamp(1.6rem, 4vw, 2rem) !important;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ── Currency Box ── */
+.currency-box {
+  padding: 20px 24px 16px;
+}
+.currency-box--from {
+  background: transparent;
+}
+.currency-box--to {
+  background: #f8fafc;
+}
+.currency-box__label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600 !important;
+  color: #94a3b8 !important;
+  font-size: 0.7rem !important;
+  margin-bottom: 8px !important;
+  display: block;
+}
+.currency-box__row {
+  width: 100%;
+}
+.currency-box__select-wrap {
+  min-width: 120px !important;
+}
+.currency-box__select {
+  font-weight: 600;
+}
+.currency-box__select .MuiSelect-select {
+  padding: 6px 0 !important;
+}
+.currency-flag {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.currency-box__amount {
+  flex: 1;
+}
+.currency-box__amount input {
+  padding: 4px 0 !important;
+}
+.currency-box__amount input::-webkit-outer-spin-button,
+.currency-box__amount input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.currency-box__amount input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ── Swap Button Row ── */
+.swap-row {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+.swap-divider {
+  flex: 1;
+}
+.swap-btn {
+  width: 40px !important;
+  height: 40px !important;
+  border: 2px solid #e2e8f0 !important;
+  background: #fff !important;
+  color: #6366f1 !important;
+  transition: all 0.25s ease !important;
+  z-index: 1;
+}
+.swap-btn:hover {
+  border-color: #6366f1 !important;
+  background: #eef2ff !important;
+  transform: scale(1.08);
+}
+.swap-spin {
+  animation: spin-once 0.4s ease;
+}
+@keyframes spin-once {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(180deg); }
+}
+
+/* ── Rate Badge ── */
+.rate-badge {
+  padding: 8px 14px;
+  background: #f1f5f9;
+  border-radius: 12px;
+}
+
+/* ── Convert Button ── */
+.convert-btn {
+  height: 52px !important;
+  border-radius: 14px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%) !important;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease !important;
+}
+.convert-btn:hover {
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4) !important;
+  transform: translateY(-1px);
+}
+.convert-btn:disabled {
+  background: #e2e8f0 !important;
+  color: #94a3b8 !important;
+  box-shadow: none !important;
+  transform: none;
+}
+
+/* ── Rate + status area padding ── */
+.app-card > .MuiStack-root:last-of-type {
+  padding: 0 24px;
+}
